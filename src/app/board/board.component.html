@@ -1,0 +1,85 @@
+<div class="playerinput1">
+  <div>
+    <mat-form-field>
+      <input
+        id="player1"
+        matInput
+        placeholder="Player X"
+        [(ngModel)]="player1"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        id="player2"
+        matInput
+        placeholder="Player O"
+        [(ngModel)]="player2"
+      />
+    </mat-form-field>
+    <span class="player1Name"> Player1: {{ player1 }}</span>
+    <br>
+    <span class="player1Name"> Player2: {{ player2 }}</span>
+  </div>
+  <br />
+  <div class="player1Name">
+    <div *ngIf="turn === 'X'">Turn: {{player1}}</div>
+    <div *ngIf="turn === 'O'">Turn: {{player2}}</div>
+  </div>
+</div>
+<div class="startbutton" [ngSwitch]="player1 !== null && player2 !== null">
+  <p *ngSwitchCase="true">
+    <button mat-raised-button color="accent" (click)="startGame()">
+      Reset
+    </button>
+  </p>
+  <p *ngSwitchCase="false">
+    <button mat-raised-button color="accent" disabled>
+      Reset
+    </button>
+  </p>
+</div>
+<div class="container">
+  <div
+    [ngClass]="
+      player1 !== null && player2 !== null ? 'game-board' : 'boardclass'
+    "
+  >
+    <div class="board">
+      <div>
+        <app-square
+          *ngFor="let square of squares | slice: 0:3; let i = index"
+          [value]="square"
+          (playerClick)="clickHandler(i)"
+        ></app-square>
+      </div>
+      <div>
+        <app-square
+          *ngFor="let square of squares | slice: 3:6; let i = index"
+          [value]="square"
+          (playerClick)="clickHandler(i + 3)"
+        >
+        </app-square>
+      </div>
+      <div>
+        <app-square
+          *ngFor="let square of squares | slice: 6; let i = index"
+          [value]="square"
+          (playerClick)="clickHandler(i + 6)"
+        ></app-square>
+      </div>
+    </div>
+    <br />
+  </div>
+  <div class="gameMsg">
+    <!-- <div *ngIf="winner !== 'tie' && (winner === 'X' || winner === 'O')"> -->
+    <div *ngIf="winner === 'X'">Winner Is {{ player1 | uppercase }}</div>
+    <div *ngIf="winner === 'O'">Winner Is {{ player2 | uppercase }}</div>
+    <div *ngIf="winner === 'tie'">
+      It's a Tie
+    </div>
+    <!-- </div> -->
+  </div>
+</div>
+<!-- </div> -->

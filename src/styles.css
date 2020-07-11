@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(39, 39, 39);
+  color: aliceblue;
+}
+/* 
+.container {
+  margin-top: 50%;
+} */
+
+.startbutton {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.submitbtn {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.playerinput1 {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+}
+.boardclass {
+  display: none;
+}
+.player1Name {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.gameMsg {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: x-large;
+}
